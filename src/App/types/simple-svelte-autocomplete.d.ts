@@ -1,34 +1,19 @@
-import type { Item } from '../item.model';
-
 declare module 'simple-svelte-autocomplete' {
     import { SvelteComponentTyped } from 'svelte';
 
     export interface AutoCompleteProps
         extends svelte.JSX.HTMLAttributes<HTMLElementTagNameMap['div']> {
-        items: Item[];
-        // ...
+        items: any[];
+        labelFieldName?: string;
+        valueFieldName?: string;
+        lock?: boolean;
+        closeOnBlur?: boolean;
+        showClear?: boolean;
+        itemFilterFunction?: (item: any, keywords: string) => boolean;
+        selectedItem?: any | undefined;
+        disabled?: boolean;
+        onChange: (item: any) => void;
     }
 
-    export interface AutoCompleteEvents {
-        onChange: (value: Item) => void
-    }
-
-    export class AutoComplete extends SvelteComponentTyped<AutoCompleteProps, AutoCompleteEvents> { }
+    export default class AutoComplete extends SvelteComponentTyped<AutoCompleteProps> { }
 }
-
-// https://github.com/carbon-design-system/sveld
-import type { SvelteComponentTyped } from 'svelte';
-
-export interface AutoCompleteProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNameMap['div']> {
-    items: Item[];
-    // onChange: (value: Item) => void;
-    // ...
-}
-
-export class AutoComplete extends SvelteComponentTyped<
-    AutoCompleteProps,
-    {
-        onChange: (value: Item) => void
-    },
-    { default: {} }
-> { }

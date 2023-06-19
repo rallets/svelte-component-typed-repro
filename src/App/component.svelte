@@ -3,7 +3,9 @@
     import type { Item } from './item.model';
 
     const shouldDisableFields = false;
+
     let selectedItem: Item | undefined = undefined;
+
     const items: Item[] = [
         {
             id: 1,
@@ -42,7 +44,7 @@
             {/if}
         </div>
 
-        <div slot="no-results">Ingen resultater</div>
+        <div slot="no-results">No results</div>
     </AutoComplete>
 </div>
 
