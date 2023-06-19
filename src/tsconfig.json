@@ -1,0 +1,23 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+    "include": [
+        "App/*",
+        "App/**/*",
+        "Views/*",
+        "Views/**/*",
+    ],
+    "exclude": [
+        "node_modules/*",
+        "__sapper__/*",
+        ".vscode/*"
+    ],
+    "compilerOptions": {
+        "target": "ES2020",
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        // needed by i18n
+        "resolveJsonModule": true,
+        // needed to silent deprecation warning related to svelte `importsNotUsedAsValues` required flag. svelte 4 should not require it anymore.
+        // "ignoreDeprecations": "5.0",
+    },
+}

@@ -1,0 +1,42 @@
+{
+    "verbose": true,
+    "transform": {
+        "^.+\\.svelte$": [
+            "svelte-jester",
+            {
+                "preprocess": "./App/svelte-pipeline/svelte.config.js"
+            }
+        ],
+        "^.+\\.ts$": [
+            "ts-jest",
+            {
+                "tsconfig": "<rootDir>/tsconfig.json"
+            }
+        ]
+    },
+    "moduleFileExtensions": [
+        "js",
+        "ts",
+        "svelte"
+    ],
+    "testEnvironment": "./jest.extended-dom.env.ts",
+    "setupFilesAfterEnv": [
+        "@testing-library/jest-dom/extend-expect"
+    ],
+    "testMatch": [
+        "**/*.test.ts"
+    ],
+    "reporters": [
+        "default",
+        [
+            "jest-junit",
+            {
+                "outputDirectory": "test-results",
+                "outputName": "junit.xml"
+            }
+        ]
+    ],
+    "roots": [
+        "App"
+    ]
+}
