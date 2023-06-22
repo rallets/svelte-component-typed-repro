@@ -1,19 +1,29 @@
+/* NB: you cannot have a import or export on top of this file, otherwise it will not work. */
+
 declare module 'simple-svelte-autocomplete' {
     import { SvelteComponentTyped } from 'svelte';
 
-    export interface AutoCompleteProps
+    export interface AutoCompleteProps<T>
         extends svelte.JSX.HTMLAttributes<HTMLElementTagNameMap['div']> {
-        items: any[];
+        items: T[];
         labelFieldName?: string;
         valueFieldName?: string;
         lock?: boolean;
         closeOnBlur?: boolean;
         showClear?: boolean;
-        itemFilterFunction?: (item: any, keywords: string) => boolean;
-        selectedItem?: any | undefined;
+        itemFilterFunction?: (T, keywords) => boolean;
+        selectedItem?: T | undefined;
         disabled?: boolean;
-        onChange: (item: any) => void;
+        onChange: (item: T) => void
     }
 
-    export default class AutoComplete extends SvelteComponentTyped<AutoCompleteProps> { }
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    export interface AutoCompleteEvents {
+        // NOP
+    }
+
+    export default class AutoComplete extends SvelteComponentTyped<AutoCompleteProps<T>, AutoCompleteEvents, {
+        'item': { item: T },
+        'no-results': null
+    }> { }
 }

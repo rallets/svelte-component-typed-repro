@@ -18,6 +18,6 @@
         // needed by i18n
         "resolveJsonModule": true,
         // needed to silent deprecation warning related to svelte `importsNotUsedAsValues` required flag. svelte 4 should not require it anymore.
-        // "ignoreDeprecations": "5.0",
+        "ignoreDeprecations": "5.0",
     },
 }
